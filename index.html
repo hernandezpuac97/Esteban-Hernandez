@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esteban Hernández - Portafolio Profesional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables de colores */
+        :root {
+            --navy: #0a1f3a;
+            --gold: #d4af37;
+            --white: #ffffff;
+            --black: #000000;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333333;
+        }
+
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--dark-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* JERARQUÍA DE TIPOGRAFÍA */
+        
+        /* Nivel 1: Títulos principales de página (más grandes) */
+        .page-title {
+            font-size: 2.8rem; /* 44.8px */
+            margin-bottom: 2rem;
+            color: var(--navy);
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        /* Nivel 2: Títulos de sección importantes */
+        .intro h1 {
+            font-size: 2.2rem; /* 35.2px */
+            margin-bottom: 1rem;
+            color: var(--navy);
+            font-weight: 600;
+            letter-spacing: -0.3px;
+        }
+
+        /* Nivel 3: Subtítulos y encabezados de contenido */
+        .content-section h3 {
+            font-size: 1.6rem; /* 25.6px */
+            margin-bottom: 0.8rem;
+            color: var(--navy);
+            border-left: 4px solid var(--gold);
+            padding-left: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Nivel 4: Títulos de educación y cursos */
+        .education-item h3, 
+        .course-item h3 {
+            font-size: 1.4rem; /* 22.4px */
+            margin-bottom: 0.5rem;
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        /* Nivel 5: Texto destacado y empresas */
+        .content-section strong,
+        .education-item p,
+        .course-item p {
+            font-size: 1.1rem; /* 17.6px */
+            font-weight: 500;
+            color: var(--dark-gray);
+        }
+
+        /* Nivel 6: Texto normal/body */
+        .about-text,
+        .content-section p:not(strong) {
+            font-size: 1rem; /* 16px */
+            color: var(--black);
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        /* Nivel 7: Texto secundario y listas */
+        .content-section ul li {
+            font-size: 0.95rem; /* 15.2px */
+            margin-bottom: 0.8rem;
+            position: relative;
+            color: #1c542d;
+            font-weight: 400;
+        }
+
+        /* Nivel 8: Texto pequeño y detalles */
+        .intro h2,
+        .copyright {
+            font-size: 0.9rem; /* 14.4px */
+            color: var(--navy);
+            font-weight: 500;
+            opacity: 0.8;
+        }
+
+        /* Estilos del encabezado */
+        header {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 0.8rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem; /* 28.8px - Nivel 2 */
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        /* Estilos del menú de navegación */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.4rem;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.4rem 0;
+            position: relative;
+            font-size: 1.05rem; /* 16.8px - Nivel 6 */
+        }
+
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--gold);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .active {
+            color: var(--gold) !important;
+        }
+
+        .active::after {
+            width: 100% !important;
+        }
+
+        /* Estilos del menú hamburguesa para móviles */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 101;
+        }
+
+        .menu-toggle span {
+            height: 3px;
+            width: 25px;
+            background-color: var(--white);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Estilos del contenido principal */
+        main {
+            min-height: calc(100vh - 140px);
+        }
+
+        .page {
+            display: none;
+            padding: 2.5rem 0;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Estilos de la página de inicio */
+        .intro {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .profile-photo {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid var(--gold);
+            margin: 0 auto 2rem;
+            display: block;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-text {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            text-align: justify;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .content-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .content-section ul {
+            list-style-type: none;
+            padding-left: 1.5rem;
+        }
+
+        .content-section ul li::before {
+            content: '•';
+            color: var(--gold);
+            font-weight: bold;
+            position: absolute;
+            left: -1rem;
+        }
+
+        .education-item, .course-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .education-item:last-child, .course-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Estilos para los espacios de diplomas */
+        .diploma-container {
+            margin-top: 1rem;
+        }
+
+        .diploma-space {
+            display: inline-block;
+            max-width: 100%;
+            background-color: var(--light-gray);
+            border: 1px solid var(--gold);
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 0.5rem;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .diploma-space:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .diploma-space img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+        }
+
+        .zoom-icon {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+
+        .diploma-space:hover .zoom-icon {
+            opacity: 1;
+        }
+
+        /* Modal para diplomas ampliados */
+        .diploma-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .diploma-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: background 0.3s ease;
+        }
+
+        .modal-nav:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .prev-diploma {
+            left: 20px;
+        }
+
+        .next-diploma {
+            right: 20px;
+        }
+
+        /* Estilos del pie de página */
+        footer {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+            margin: 1.2rem 0;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.3rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--gold);
+        }
+
+        /* MEDIA QUERIES ESPECÍFICAS PARA COMPUTADORAS Y LAPTOPS */
+        @media (min-width: 1025px) {
+            .container {
+                padding: 0 40px;
+            }
+            
+            .intro {
+                padding: 4rem 0;
+            }
+            
+            .profile-photo {
+                width: 320px;
+                height: 320px;
+                border: 8px solid var(--gold);
+                margin-bottom: 2.5rem;
+            }
+            
+            /* Ajustes de jerarquía para pantallas grandes */
+            .page-title {
+                font-size: 3rem; /* 48px */
+            }
+            
+            .intro h1 {
+                font-size: 2rem; /* 32px */
+            }
+            
+            .content-section h3 {
+                font-size: 1.5rem; /* 24px */
+            }
+            
+            .education-item h3, 
+            .course-item h3 {
+                font-size: 1.3rem; /* 20.8px */
+            }
+            
+            .about-text {
+                font-size: 1.05rem; /* 16.8px */
+            }
+            
+            .diploma-space {
+                max-width: 500px;
+            }
+        }
+
+        /* Mejoras para pantallas muy grandes */
+        @media (min-width: 1440px) {
+            .container {
+                max-width: 1400px;
+            }
+            
+            .page-title {
+                font-size: 3.2rem; /* 51.2px */
+            }
+            
+            .profile-photo {
+                width: 350px;
+                height: 350px;
+            }
+        }
+
+        /* Estilos responsive para móviles */
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            /* Jerarquía móvil */
+            .page-title {
+                font-size: 2.2rem; /* 35.2px */
+            }
+            
+            .intro h1 {
+                font-size: 1.8rem; /* 28.8px */
+            }
+            
+            .content-section h3 {
+                font-size: 1.4rem; /* 22.4px */
+            }
+            
+            .education-item h3, 
+            .course-item h3 {
+                font-size: 1.2rem; /* 19.2px */
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .profile-photo {
+                width: 220px;
+                height: 220px;
+            }
+            
+            .about-text {
+                text-align: left;
+                padding: 0 10px;
+                font-size: 0.95rem;
+            }
+            
+            nav ul li a {
+                font-size: 1rem;
+            }
+            
+            .modal-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .prev-diploma {
+                left: 10px;
+            }
+            
+            .next-diploma {
+                right: 10px;
+            }
+        }
+
+        /* Tablets y iPads */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                flex-direction: column;
+                background-color: var(--navy);
+                transition: left 0.3s;
+                padding: 1rem 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            nav ul li {
+                margin: 0;
+                text-align: center;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 1rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* iPads en modo horizontal y laptops pequeñas */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                padding: 0 30px;
+            }
+            
+            .page-title {
+                font-size: 2.6rem;
+            }
+            
+            .intro h1 {
+                font-size: 1.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado con menú de navegación -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">Esteban Hernández</div>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#" class="nav-link active" data-page="inicio">Inicio</a></li>
+                    <li><a href="#" class="nav-link" data-page="experiencia">Experiencia</a></li>
+                    <li><a href="#" class="nav-link" data-page="educacion">Educación</a></li>
+                    <li><a href="#" class="nav-link" data-page="cursos">Cursos</a></li>
+                    <li><a href="#" class="nav-link" data-page="cambio">Cambio</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+        <!-- Página de Inicio -->
+        <section id="inicio" class="page active">
+            <div class="container">
+                <div class="intro">
+                    <img src="Img/Fotop.jpg" alt="Fotografía de Esteban Hernández" class="profile-photo">
+                    <h1>Acerca de mí</h1>
+                    <br>
+                    <div class="about-text">
+                        <p>Representante de Servicio al Cliente con experiencia en asistencia jurídica y administrativa, mi perfil se distingue por una sólida ética laboral y enfoque en la resolución eficiente de problemas. A pesar de enfrentar el desafío de ser paciente renal crónico, mi resiliencia y compromiso se mantienen inquebrantables. Soy un profesional joven con altas aspiraciones, orientado a metas, que aporta honestidad, responsabilidad y una actitud proactiva en cualquier entorno corporativo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Página de Experiencia -->
+        <section id="experiencia" class="page">
+            <div class="container">
+                <h2 class="page-title">Experiencia Profesional</h2>
+                <br>
+                <div class="content-section">
+                    <h3>Asistente Jurídico</h3>
+                    <p><strong>Bufete Popular de la Universidad de San Carlos de Guatemala</strong></p>
+                    <br>
+                    <p style="color: black">Actividades:</p>
+                    <ul>
+                        <li>Declaraciones juradas de todo tipo.</li>
+                        <li>Convenios y documentos privados.</li>
+                        <li>Memoriales.</li>
+                        <li>Autenticas de documentos.</li>
+                        <li>Asesoramiento legal.</li>
+                        <li>Conciliaciones.</li>
+                        <li>Atención al usuario.</li>
+                        <li>Demandas civiles de Divorcio Voluntario, Oral de alimentos y Ejecutivos en la Vía de apremio.</li>
+                    </ul>
+                </div>
+                <br>
+                <div class="content-section">
+                    <h3>Agente de Call Center</h3>
+                    <p><strong>Castor's Pizza</strong></p>
+                    <br>
+                    <p style="color: black">Actividades:</p>
+                    <ul>
+                        <li>Servicio al cliente.</li>
+                        <li>Conocimiento del menú y productos de la empresa.</li>
+                        <li>Resolución de problemas.</li>
+                        <li>Manejo de quejas.</li>
+                        <li>Cobro por medio de tarjeta de débito/crédito.</li>
+                        <li>Seguimiento de Órdenes.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Página de Educación -->
+        <section id="educacion" class="page">
+            <div class="container">
+                <h2 class="page-title">Educación</h2>
+                <br>
+                <div class="content-section">
+                    <div class="education-item">
+                        <h3>Bachiller en Ciencias y Letras con Orientación en Computación</h3>
+                        <p>Colegio Salesiano Don Bosco</p>
+                    </div>
+                    
+                    <div class="education-item">
+                        <h3>10mo semestre de la carrera de Ciencias Jurídicas y Sociales, Abogacía y Notariado</h3>
+                        <p>Universidad de San Carlos de Guatemala</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Página de Cursos -->
+        <section id="cursos" class="page">
+            <div class="container">
+                <h2 class="page-title">Cursos y Certificaciones</h2>
+                <br>
+                <div class="content-section">
+                    <div class="course-item">
+                        <h3>Excel Avanzado</h3>
+                        <p>Instituto Técnico de Capacitación y Productividad (INTECAP)</p>
+                        <div class="diploma-container">
+                            <div class="diploma-space" data-diploma="1">
+                                <img src="Img/ExcelA.jpg" alt="Diploma Excel Avanzado - INTECAP">
+                                <div class="zoom-icon">
+                                    <i class="fas fa-search-plus"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="course-item">
+                        <h3>Especialización: Éxito Profesional</h3>
+                        <p>University for California</p>
+                        <div class="diploma-container">
+                            <div class="diploma-space" data-diploma="2">
+                                <img src="Img/ÉxitoPro.jpg" alt="Certificado Éxito Profesional - University for California">
+                                <div class="zoom-icon">
+                                    <i class="fas fa-search-plus"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="course-item">
+                        <h3>DDHH y Democracia una visión desde América Latina</h3>
+                        <p>Universidad de los Andes</p>
+                        <div class="diploma-container">
+                            <div class="diploma-space" data-diploma="3">
+                                <img src="Img/DDHH.jpg" alt="Certificado DDHH y Democracia - Universidad de los Andes">
+                                <div class="zoom-icon">
+                                    <i class="fas fa-search-plus"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="course-item">
+                        <h3>Anticorrupción Introducción a Conceptos y Perspectiva Práctica</h3>
+                        <p>Universidad Nacional Autónoma de Mexico</p>
+                        <div class="diploma-container">
+                            <div class="diploma-space" data-diploma="4">
+                                <img src="Img/Anticorrupción.jpg" alt="Certificado Anticorrupción - UNAM">
+                                <div class="zoom-icon">
+                                    <i class="fas fa-search-plus"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="course-item">
+                        <h3>Servicio al Cliente</h3>
+                        <p>Fundación Carlos Slim</p>
+                        <div class="diploma-container">
+                            <div class="diploma-space" data-diploma="5">
+                                <img src="Img/Ruta.jpg" alt="Certificado Servicio al Cliente - Fundación Carlos Slim">
+                                <div class="zoom-icon">
+                                    <i class="fas fa-search-plus"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="course-item">
+                        <h3>Negociación</h3>
+                        <p>Escuela Superior de Administración y Dirección de Empresas (ESADE)</p>
+                        <div class="diploma-container">
+                            <div class="diploma-space" data-diploma="6">
+                                <img src="Img/esade.jpg" alt="Certificado Negociación - ESADE">
+                                <div class="zoom-icon">
+                                    <i class="fas fa-search-plus"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="course-item">
+                        <h3>Inteligencia artificial y productividad</h3>
+                        <p>Google</p>
+                        <div class="diploma-container">
+                            <div class="diploma-space" data-diploma="7">
+                                <img src="Img/esade.jpg" alt="Certificado IA y Productividad - Google">
+                                <div class="zoom-icon">
+                                    <i class="fas fa-search-plus"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="course-item">
+                        <h3>Comunicação e Atendimento ao Cliente</h3>
+                        <p>O Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul</p>
+                        <div class="diploma-container">
+                            <div class="diploma-space" data-diploma="8">
+                                <img src="Img/Comunicação.jpg" alt="Certificado Comunicação - Instituto Federal RS">
+                                <div class="zoom-icon">
+                                    <i class="fas fa-search-plus"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="course-item">
+                        <h3>Assistente Administrativo</h3>
+                        <p>O Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul</p>
+                        <div class="diploma-container">
+                            <div class="diploma-space" data-diploma="9">
+                                <img src="Img/Assistente.jpg" alt="Certificado Assistente Administrativo - Instituto Federal RS">
+                                <div class="zoom-icon">
+                                    <i class="fas fa-search-plus"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Página de Cambio -->
+        <section id="cambio" class="page">
+            <br>
+            <div class="container">
+                <h2 class="page-title">Mi Historia</h2>
+                <br>
+                <div class="content-section" style="color: #1c542d">
+                    <p>Desde mi diagnóstico de Enfermedad Renal Crónica (ERC) en Abril del 2023, he transformado el desafío en resiliencia. Esta travesía me ha forjado en la gestión meticulosa del tiempo, la disciplina y la perseverancia frente a la adversidad.</p>
+                    
+                    <p>La búsqueda laboral con esta enfermedad choca contra un muro de incomprensión. Enfrento discriminación, entrevistas que se cancelan al mencionar mi condición, el estigma de ser visto como "menos capaz" y el silencio de respuestes en postulaciones.</p>
+                    
+                    <p>La enfermedad es manejable; la falta de oportunidades y los prejuicios, son los mayores obstáculos.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal para diplomas ampliados -->
+    <div class="diploma-modal" id="diplomaModal">
+        <button class="close-modal" id="closeModal">
+            <i class="fas fa-times"></i>
+        </button>
+        <button class="modal-nav prev-diploma" id="prevDiploma">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="modal-nav next-diploma" id="nextDiploma">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="">
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <div class="container footer-content">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/esteban-b-hernandez?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/buenaventura_hndz?igsh=Ym04d3lvamU2M3Nm" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Esteban Hernández. Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navegación entre páginas
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page');
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            // Función para cambiar de página
+            function showPage(pageId) {
+                // Ocultar todas las páginas
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Mostrar la página seleccionada
+                document.getElementById(pageId).classList.add('active');
+                
+                // Actualizar enlace activo
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-page') === pageId) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                // Cerrar menú en móviles después de seleccionar una opción
+                if (window.innerWidth <= 768) {
+                    navMenu.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                }
+                
+                // Desplazar al inicio de la página
+                window.scrollTo(0, 0);
+            }
+            
+            // Event listeners para los enlaces de navegación
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    showPage(pageId);
+                });
+            });
+            
+            // Menú hamburguesa para móviles
+            menuToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            // Cerrar menú al hacer clic fuera de él en móviles
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                        menuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                }
+            });
+            
+            // Manejo del redimensionamiento de la ventana
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    navMenu.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                }
+            });
+
+            // Funcionalidad para diplomas ampliados
+            const diplomaSpaces = document.querySelectorAll('.diploma-space');
+            const diplomaModal = document.getElementById('diplomaModal');
+            const modalImage = document.getElementById('modalImage');
+            const closeModal = document.getElementById('closeModal');
+            const prevDiploma = document.getElementById('prevDiploma');
+            const nextDiploma = document.getElementById('nextDiploma');
+            
+            let currentDiplomaIndex = 0;
+            const diplomas = Array.from(diplomaSpaces);
+
+            // Abrir modal al hacer clic en un diploma
+            diplomaSpaces.forEach((diploma, index) => {
+                diploma.addEventListener('click', function(e) {
+                    if (!e.target.classList.contains('zoom-icon') && !e.target.classList.contains('fa-search-plus')) {
+                        currentDiplomaIndex = index;
+                        showDiplomaModal();
+                    }
+                });
+
+                // También permitir abrir con el icono de lupa
+                const zoomIcon = diploma.querySelector('.zoom-icon');
+                if (zoomIcon) {
+                    zoomIcon.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        currentDiplomaIndex = index;
+                        showDiplomaModal();
+                    });
+                }
+            });
+
+            function showDiplomaModal() {
+                const currentDiploma = diplomas[currentDiplomaIndex];
+                const diplomaImg = currentDiploma.querySelector('img');
+                modalImage.src = diplomaImg.src;
+                modalImage.alt = diplomaImg.alt;
+                diplomaModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Cerrar modal
+            closeModal.addEventListener('click', function() {
+                diplomaModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+
+            // Navegación entre diplomas
+            prevDiploma.addEventListener('click', function() {
+                currentDiplomaIndex = (currentDiplomaIndex - 1 + diplomas.length) % diplomas.length;
+                showDiplomaModal();
+            });
+
+            nextDiploma.addEventListener('click', function() {
+                currentDiplomaIndex = (currentDiplomaIndex + 1) % diplomas.length;
+                showDiplomaModal();
+            });
+
+            // Cerrar modal con tecla Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && diplomaModal.classList.contains('active')) {
+                    diplomaModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+                
+                // Navegación con teclas
+                if (diplomaModal.classList.contains('active')) {
+                    if (e.key === 'ArrowLeft') {
+                        currentDiplomaIndex = (currentDiplomaIndex - 1 + diplomas.length) % diplomas.length;
+                        showDiplomaModal();
+                    } else if (e.key === 'ArrowRight') {
+                        currentDiplomaIndex = (currentDiplomaIndex + 1) % diplomas.length;
+                        showDiplomaModal();
+                    }
+                }
+            });
+
+            // Cerrar modal al hacer clic fuera de la imagen
+            diplomaModal.addEventListener('click', function(e) {
+                if (e.target === diplomaModal) {
+                    diplomaModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
